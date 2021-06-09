@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     width: "400px",
     height: "350px",
   },
@@ -52,7 +52,7 @@ export default function SignupView() {
         </form>
         <Divider />
         <Typography color="textSecondary" align="center">
-          Not a User? Sign up <Link to="/">here</Link>!
+          Already a user? Sign in <Link to="/">here</Link>!
         </Typography>
       </Card>
     </div>

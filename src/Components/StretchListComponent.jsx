@@ -13,6 +13,7 @@ export default function StretchListComponent(props) {
             username={stretch.username}
             description={stretch.description}
             profileImage={stretch.profileImage}
+            arr={stretch.arr}
             key={stretch.id}
           />
         ))}

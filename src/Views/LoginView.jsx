@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     width: "400px",
     height: "300px",
   },

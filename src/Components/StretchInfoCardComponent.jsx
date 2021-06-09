@@ -60,15 +60,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function StretchInfoCardComponent(props) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHover, setIsHover] = useState(false);
   const setClose = () => {
     setIsOpen(false);
   };
-  const arr = useStore((state) => state.arr);
+  // const arr = useStore((state) => state.arr);
   const classes = useStyles();
-  const { title, username, description, profileImage } = props;
+  const { title, username, description, profileImage, arr } = props;
   return (
     <div>
-      <Card className={classes.root} raised>
+      <Card
+        className={classes.root}
+        raised={isHover}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+      >
         {profileImage ? (
           <Avatar src={profileImage} className={classes.profile}>
             <PersonOutlineIcon />
@@ -102,7 +108,10 @@ export default function StretchInfoCardComponent(props) {
                 className={classes.playIcon}
               />
             </IconButton>
-            mm:ss
+            {arr.reduce((acc, cur) => {
+              return acc + cur.seconds;
+            }, 0)}
+            s
           </div>
         </div>
       </Card>

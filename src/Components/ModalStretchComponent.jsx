@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 export default function ModalStretchComponent(props) {
   const arr = props.arr;
@@ -41,7 +42,7 @@ export default function ModalStretchComponent(props) {
       justifyContent: "space-between",
       margin: "auto",
       width: "50vw",
-      background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+      //   background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
       marginTop: "10vh",
       backgroundColor: theme.palette.background.paper,
       boxShadow: theme.shadows[5],
@@ -52,10 +53,24 @@ export default function ModalStretchComponent(props) {
   const classes = useStyles();
   return (
     <Card raised className={classes.paper}>
-      <h2>name: {arr[count].name}</h2>
-      <h2>type: {arr[count].type}</h2>
-      <img style={{ width: "200px" }} src={arr[count].img} alt="something" />
+      <Typography variant="h4" color="primary">
+        {arr[count].name}
+      </Typography>
+      {arr[count].img && (
+        <img style={{ width: "200px" }} src={arr[count].img} alt="something" />
+      )}
       <Divider />
+      <CountdownCircleTimer
+        key={count}
+        isPlaying
+        duration={arr[count].seconds}
+        colors={[
+          ["#004777", 0.5],
+          ["#f50057", 0.5],
+        ]}
+      >
+        {({ remainingTime }) => remainingTime}
+      </CountdownCircleTimer>
       <div>
         {count > 0 && (
           <Button variant="contained" onClick={decreaseCount}>
